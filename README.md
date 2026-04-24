@@ -15,3 +15,4 @@ firebase-ით ავტენთიფიკაცია/ავტორიზ
 
 #Video demo
 
+https://github.com/user-attachments/assets/67f96dee-5efa-436f-b74d-ed6a52b1edb1
