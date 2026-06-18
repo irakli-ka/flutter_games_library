@@ -17,12 +17,4 @@ class Platform {
       slug: platformData['slug'] ?? '',
     );
   }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'slug': slug,
-    };
-  }
 }
