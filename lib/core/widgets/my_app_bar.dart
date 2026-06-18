@@ -6,12 +6,17 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.onSearchChanged,
     this.onLoginTap,
+    this.onSearchTap,
+    this.isReadOnly = false,
     this.hintText = 'Search games...',
   });
 
   final ValueChanged<String> onSearchChanged;
+
   final VoidCallback? onLoginTap;
   final String hintText;
+  final VoidCallback? onSearchTap;
+  final bool isReadOnly;
 
   @override
   Size get preferredSize => const Size.fromHeight(72);
@@ -24,6 +29,9 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Padding(
         padding: const EdgeInsets.only(left: 12, right: 8),
         child: TextField(
+          readOnly: isReadOnly,
+          onTap: isReadOnly ? onSearchTap : null ,
+          autofocus: !isReadOnly,
           onChanged: onSearchChanged,
           cursorColor: AppColors.textSecondary,
           decoration: InputDecoration(
