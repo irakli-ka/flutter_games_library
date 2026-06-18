@@ -53,10 +53,14 @@ class _HomeViewState extends State<HomeView> {
     final remainingGames = allGames.length > 5 ? allGames.sublist(5) : [];
 
     return Scaffold(
-      appBar: MyAppBar(onSearchChanged: (v) => gameProvider.searchGames(v)),
+      appBar: MyAppBar(
+        isReadOnly: true,
+        onSearchTap: () => Navigator.pushNamed(context, '/search'),
+        onSearchChanged: (_) {},
+        onLoginTap: () => Navigator.pushNamed(context, '/profile'),
+      ),
       body: LayoutBuilder(builder: (context, constraints) {
         final isWide = constraints.maxWidth > 700;
-
         return RefreshIndicator(
           onRefresh: () => gameProvider.fetchGames(),
           child: CustomScrollView(
