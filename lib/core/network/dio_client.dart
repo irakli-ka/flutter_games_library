@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import '../../env/env.dart';
 
 class DioClient {
   final Dio dio = Dio(
@@ -9,7 +10,7 @@ class DioClient {
     ),
   )..interceptors.add(InterceptorsWrapper(
     onRequest: (options, handler) {
-      options.queryParameters['key'] = 'd37c891ef01046cd82ec619ccbb7d0e7';
+      options.queryParameters['key'] = Env.apiKey;
       return handler.next(options);
     },
   ));
