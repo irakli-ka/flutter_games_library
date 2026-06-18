@@ -5,7 +5,7 @@ import '../models/game_model.dart';
 class GameRepository {
   final DioClient _dioClient = DioClient();
 
-  Future<List<Game>> fetchGames({int page = 1, String? search}) async {
+  Future<List<Game>> fetchGames({int page = 1}) async {
     try {
       final response = await _dioClient.dio.get(
         'games',
