@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/router/app_router.dart';
 import 'features/games/providers/game_provider.dart';
+import 'features/search/providers/search_provider.dart';
 import 'theme/app_theme.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GameProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
