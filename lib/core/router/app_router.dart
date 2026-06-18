@@ -22,10 +22,10 @@ class AppRouter {
       //   return MaterialPageRoute(builder: (_) => const LoginView());
       // case profile:
       //   return MaterialPageRoute(builder: (_) => const UserProfileView());
-      // case search:
-      //   return MaterialPageRoute(builder: (_) => const SearchView());
-      // case searchResult:
-      //   return MaterialPageRoute(builder: (_) => const SearchResultView());
+      case search:
+        return MaterialPageRoute(builder: (_) => const SearchView());
+      case searchResult:
+        return MaterialPageRoute(builder: (_) => const SearchResultView());
       case gameDetails:
         final gameId = settings.arguments as int;
         return MaterialPageRoute(builder: (_) => GameDetailsView(gameId: gameId));
