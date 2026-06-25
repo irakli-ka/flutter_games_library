@@ -57,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
         isReadOnly: true,
         onSearchTap: () => Navigator.pushNamed(context, '/search'),
         onSearchChanged: (_) {},
-        onLoginTap: () => Navigator.pushNamed(context, '/profile'),
+        onLoginTap: () => Navigator.pushNamed(context, '/login'),
       ),
       body: LayoutBuilder(builder: (context, constraints) {
         final isWide = constraints.maxWidth > 700;
