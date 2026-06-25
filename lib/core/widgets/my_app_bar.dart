@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '/theme/app_theme.dart';
+import 'package:provider/provider.dart';
+import '../../features/auth/providers/auth_provider.dart';
+import '../../theme/app_theme.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({
@@ -12,7 +14,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final ValueChanged<String> onSearchChanged;
-
   final VoidCallback? onLoginTap;
   final String hintText;
   final VoidCallback? onSearchTap;
@@ -30,31 +31,49 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.only(left: 12, right: 8),
         child: TextField(
           readOnly: isReadOnly,
-          onTap: isReadOnly ? onSearchTap : null ,
+          onTap: isReadOnly ? onSearchTap : null,
           autofocus: !isReadOnly,
           onChanged: onSearchChanged,
           cursorColor: AppColors.textSecondary,
           decoration: InputDecoration(
             hintText: hintText,
-            prefixIcon: const Icon(Icons.search, color:(AppColors.textSecondary)),
+            prefixIcon: const Icon(Icons.search, color: AppColors.textSecondary),
             filled: true,
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: AppColors.myDarkerBackground),
+              borderSide: const BorderSide(color: AppColors.myDarkerBackground),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: AppColors.textSecondary),
+              borderSide: const BorderSide(color: AppColors.textSecondary),
             ),
             contentPadding: const EdgeInsets.symmetric(vertical: 10),
           ),
         ),
       ),
       actions: [
-        IconButton(
-          onPressed: onLoginTap,
-          tooltip: 'Login',
-          icon: const Icon(Icons.login),
+        Consumer<AuthProvider>(
+          builder: (context, authProvider, child) {
+            if (authProvider.isAuthenticated && authProvider.userModel != null) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/profile');
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 6.0),
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(authProvider.userModel!.profileImageUrl),
+                  ),
+                ),
+              );
+            } else {
+              return IconButton(
+                onPressed: onLoginTap,
+                tooltip: 'Login',
+                icon: const Icon(Icons.login),
+              );
+            }
+          },
         ),
         const SizedBox(width: 8),
       ],
