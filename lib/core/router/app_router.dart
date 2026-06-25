@@ -16,7 +16,7 @@ class AppRouter {
   static const String search = '/search';
   static const String searchResult = '/search-result';
   static const String gameDetails = '/game-details';
-  static const String SearchUser = '/search-user';
+  static const String searchUser = '/search-user';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -34,10 +34,25 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SearchResultView());
       case gameDetails:
         final gameId = settings.arguments as int;
-        return MaterialPageRoute(
-          builder: (_) => GameDetailsView(gameId: gameId),
+        return PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 500),
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              GameDetailsView(gameId: gameId),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = Offset(0.0, 1.0);
+            const end = Offset.zero;
+            const curve = Curves.easeInOutQuart;
+
+            var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            var offsetAnimation = animation.drive(tween);
+
+            return SlideTransition(
+              position: offsetAnimation,
+              child: child,
+            );
+          },
         );
-        case SearchUser:
+        case searchUser:
           return MaterialPageRoute(builder: (_) => const SearchedProfileView());
       default:
         return MaterialPageRoute(
