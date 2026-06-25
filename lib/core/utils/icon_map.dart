@@ -7,14 +7,15 @@ Widget buildPlatformIcons(List<Platform> platforms) {
   final Set<String> iconPaths = {};
 
   for (var p in platforms) {
-    final slug = p.slug.toLowerCase();
-    if (slug.contains('pc')) {
+    final searchStr = "${p.slug} ${p.name}".toLowerCase();
+
+    if (searchStr.contains('pc') || searchStr.contains('windows')) {
       iconPaths.add('lib/assets/icons/ic_platform_pc.svg');
-    } else if (slug.contains('playstation') || slug.contains('ps')) {
+    } else if (searchStr.contains('playstation') || searchStr.contains('ps')) {
       iconPaths.add('lib/assets/icons/ic_platform_playstation.svg');
-    } else if (slug.contains('xbox')) {
+    } else if (searchStr.contains('xbox')) {
       iconPaths.add('lib/assets/icons/ic_platform_xbox.svg');
-    } else if (slug.contains('nintendo') || slug.contains('switch')) {
+    } else if (searchStr.contains('nintendo') || searchStr.contains('switch')) {
       iconPaths.add('lib/assets/icons/ic_platform_nintendo.svg');
     }
   }
@@ -27,7 +28,8 @@ Widget buildPlatformIcons(List<Platform> platforms) {
             path,
             width: 16,
             height: 16,
-            colorFilter: const ColorFilter.mode(AppColors.iconColor, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(
+                AppColors.iconColor, BlendMode.srcIn),
           ),
         )).toList(),
   );

@@ -7,7 +7,6 @@ class Game {
   final String genre;
   final double rating;
   final String imageUrl;
-  final int metacritic;
   final List<Platform> platforms;
 
   Game({
@@ -16,18 +15,28 @@ class Game {
     required this.genre,
     required this.rating,
     required this.imageUrl,
-    required this.metacritic,
     required this.platforms,
   });
 
   factory Game.fromJson(Map<String, dynamic> json) {
-    final List<Genre> genres = (json['genres'] as List?)
-        ?.map((g) => Genre.fromJson(g))
-        .toList() ?? [];
+    List<Map<String, dynamic>> ensureMapList(dynamic data) {
+      if (data == null) return [];
+      if (data is List) {
+        return data.where((e) => e != null).map((e) => Map<String, dynamic>.from(e as Map)).toList();
+      }
+      if (data is Map) {
+        return data.values.map((e) => Map<String, dynamic>.from(e as Map)).toList();
+      }
+      return [];
+    }
 
-    final List<Platform> platforms = (json['platforms'] as List?)
-        ?.map((p) => Platform.fromJson(p))
-        .toList() ?? [];
+    final List<Genre> genres = ensureMapList(json['genres'])
+        .map((g) => Genre.fromJson(g))
+        .toList();
+
+    final List<Platform> platforms = ensureMapList(json['platforms'])
+        .map((p) => Platform.fromJson(p))
+        .toList();
 
     String allGenres = genres.isNotEmpty
         ? genres.map((g) => g.name).join(', ')
@@ -38,8 +47,7 @@ class Game {
       title: json['name'] ?? 'No Title',
       genre: allGenres,
       rating: (json['rating'] ?? 0.0).toDouble(),
-      imageUrl: json['background_image'] ?? '',
-      metacritic: json['metacritic'] ?? 0,
+      imageUrl: json['backgroundImage'] ?? json['background_image'] ?? '',
       platforms: platforms,
     );
   }
