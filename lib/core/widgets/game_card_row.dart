@@ -70,7 +70,7 @@ class GameCardRow extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 4),
                     Text(
                       game.genre,
                       style: const TextStyle(
@@ -80,7 +80,7 @@ class GameCardRow extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     buildPlatformIcons(game.platforms),
                   ],
                 ),

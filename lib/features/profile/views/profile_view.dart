@@ -131,7 +131,7 @@ class _ProfileViewState extends State<ProfileView> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 16,
                       mainAxisSpacing: 0,
-                      childAspectRatio: 3.2,
+                      childAspectRatio: 2.9,
                     ),
                     delegate: SliverChildBuilderDelegate(
                           (context, index) =>

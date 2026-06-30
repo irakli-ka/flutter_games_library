@@ -82,7 +82,7 @@ class _HomeViewState extends State<HomeView> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 0,
-                    childAspectRatio: 3.2,
+                    childAspectRatio: 2.9,
                   ),
                   delegate: SliverChildBuilderDelegate(
                         (context, index) => GameCardRow(game: remainingGames[index]),
