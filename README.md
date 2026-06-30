@@ -57,4 +57,16 @@ The project follows the **Feature-First MVVM** pattern for maximum maintainabili
 - **Backend:** Firebase (Auth & Realtime Database)
 - **Assets:** Flutter SVG, Lottie
 - **External API:** [RAWG](https://rawg.io/apidocs)
+
+### Firebase Realtime Database
+
+<img width="239" height="111" alt="firebase " src="https://github.com/user-attachments/assets/773af3c3-52db-4c80-8bd5-00e2cae1e9a8" />
+
+<img width="924" height="546" alt="firebase 2" src="https://github.com/user-attachments/assets/737bdff5-874d-4430-9ad0-757192055ef4" />
+
+<img width="307" height="93" alt="firebase 3" src="https://github.com/user-attachments/assets/2aed59e0-a0d0-4574-a7fd-e1abf2e5169a" />
+
+<img width="331" height="154" alt="firebase 4" src="https://github.com/user-attachments/assets/2be0ae9d-c266-4bb4-813d-ec5a950cd8b5" />
+
+
    
