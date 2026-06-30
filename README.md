@@ -56,5 +56,5 @@ The project follows the **Feature-First MVVM** pattern for maximum maintainabili
 - **Networking:** Dio
 - **Backend:** Firebase (Auth & Realtime Database)
 - **Assets:** Flutter SVG, Lottie
-
+- **EXternal API:** [RAWG](https://rawg.io/apidocs)
    
