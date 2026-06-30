@@ -39,7 +39,7 @@ class _SearchViewState extends State<SearchView> {
       appBar: MyAppBar(
         onSearchChanged: (val) =>
             context.read<SearchProvider>().updateQuery(val),
-        onLoginTap: () => Navigator.pushNamed(context, '/profile'),
+        onLoginTap: () => Navigator.pushNamed(context, '/login'),
       ),
       body: searchProvider.isLoadingFilters
           ? const Center(child: CircularProgressIndicator())
