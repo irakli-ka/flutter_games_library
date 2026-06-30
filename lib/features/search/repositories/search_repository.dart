@@ -59,10 +59,12 @@ class SearchRepository {
         }
       }
 
-      if (genreIds != null && genreIds.isNotEmpty)
+      if (genreIds != null && genreIds.isNotEmpty) {
         queryParameters['genres'] = genreIds.join(',');
-      if (storeIds != null && storeIds.isNotEmpty)
+      }
+      if (storeIds != null && storeIds.isNotEmpty) {
         queryParameters['stores'] = storeIds.join(',');
+      }
 
       final response = await _dioClient.dio.get(
           'games', queryParameters: queryParameters);
